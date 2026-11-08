@@ -1,0 +1,16 @@
+# Entorno virtual y cachés de Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Archivos del sistema y del editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Resultados intermedios pesados (los resultados finales de data/processed y outputs SÍ se suben como evidencia)
+data/interim/*
+!data/interim/.gitkeep
