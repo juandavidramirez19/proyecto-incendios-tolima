@@ -29,7 +29,7 @@ dataset final con controles de calidad.
 | `src/validaciones.py` | 13 controles de calidad (conservación de registros, llaves, rangos, cobertura) |
 | `src/analisis.py` | Tablas y gráficos de resultados |
 | `src/pipeline.py` | Ejecuta todo en orden |
-| `tests/` | 24 pruebas automáticas (`pytest`) |
+| `tests/` | 28 pruebas automáticas (`pytest`) |
 | `notebooks/01_avance_original_colab.ipynb` | Tu notebook original, sin modificar |
 | `docs/` | Informe técnico, registro de pruebas y guía paso a paso de VS Code y GitHub |
 
@@ -47,7 +47,7 @@ Si PowerShell bloquea la activación: `Set-ExecutionPolicy -Scope CurrentUser -E
 
 ## Ejecución
 ```powershell
-python -m pytest -q                       # pruebas (deben pasar las 24)
+python -m pytest -q                       # pruebas (deben pasar las 28)
 python -m src.pipeline                    # pipeline completo, consulta la API del IDEAM (requiere internet)
 python -m src.pipeline --meteo ninguna    # solo alertas y catálogo, sin internet
 python -m src.pipeline --meteo archivos   # meteorología desde data/raw/meteo/*.csv (descargas manuales)
