@@ -1,0 +1,52 @@
+2026-11-08 08:26:05,348 | INFO | === INICIO DEL PIPELINE | departamento=TOLIMA | periodo=2026-01-01 a 2026-09-19 | meteo=api ===
+2026-11-08 08:26:05,349 | INFO | --- 1. Carga de fuentes heterogéneas (CSV y Excel) ---
+2026-11-08 08:26:05,512 | INFO | Alertas cargadas: 41195 filas, 7 columnas
+2026-11-08 08:26:05,835 | INFO | Catálogo CNE cargado: 4528 filas, 20 columnas
+2026-11-08 08:26:05,835 | INFO | --- 2. Diagnóstico inicial de calidad ---
+2026-11-08 08:26:05,922 | INFO | Alertas: 41195 filas | nulos totales: 6
+2026-11-08 08:26:05,922 | INFO | --- 3. Limpieza y transformaciones de alertas ---
+2026-11-08 08:26:06,403 | INFO | Alertas de TOLIMA listas: 4197 filas
+2026-11-08 08:26:06,403 | INFO | --- 4. Catálogo de estaciones (contexto) ---
+2026-11-08 08:26:06,495 | INFO | --- 5. Mediciones meteorológicas del IDEAM ---
+2026-11-08 08:27:43,299 | INFO | Cobertura API temperatura   dataset sbwg-7ju4 -> OK | registros: 105685 | 2026-01-01T00:00:00.000 a 2026-09-19T23:00:00.000 
+2026-11-08 08:27:43,336 | INFO | temperatura: se reutilizó el archivo guardado meteo_temperatura_estacion_dia.csv
+2026-11-08 08:31:06,152 | INFO | Cobertura API precipitacion dataset s54a-sgyg -> OK | registros: 1108706 | 2026-01-01T00:00:00.000 a 2026-09-19T23:50:00.000 
+2026-11-08 08:31:06,153 | INFO | precipitacion: descargando 2026-01-01 a 2026-01-31
+2026-11-08 08:31:15,985 | INFO | precipitacion: resumen hecho por la API (1136 filas estación-día)
+2026-11-08 08:31:15,990 | INFO | precipitacion: descargando 2026-02-01 a 2026-02-28
+2026-11-08 08:31:22,261 | INFO | precipitacion: resumen hecho por la API (1166 filas estación-día)
+2026-11-08 08:31:22,268 | INFO | precipitacion: descargando 2026-03-01 a 2026-03-31
+2026-11-08 08:31:30,220 | INFO | precipitacion: resumen hecho por la API (1232 filas estación-día)
+2026-11-08 08:31:30,224 | INFO | precipitacion: descargando 2026-04-01 a 2026-04-30
+2026-11-08 08:31:42,828 | INFO | precipitacion: resumen hecho por la API (778 filas estación-día)
+2026-11-08 08:31:42,854 | INFO | precipitacion: descargando 2026-05-01 a 2026-05-31
+2026-11-08 08:31:50,334 | INFO | precipitacion: resumen hecho por la API (681 filas estación-día)
+2026-11-08 08:31:50,340 | INFO | precipitacion: descargando 2026-06-01 a 2026-06-30
+2026-11-08 08:32:03,209 | INFO | precipitacion: resumen hecho por la API (711 filas estación-día)
+2026-11-08 08:32:03,213 | INFO | precipitacion: descargando 2026-07-01 a 2026-07-31
+2026-11-08 08:32:19,181 | INFO | precipitacion: resumen hecho por la API (573 filas estación-día)
+2026-11-08 08:32:19,192 | INFO | precipitacion: descargando 2026-08-01 a 2026-08-31
+2026-11-08 08:32:23,568 | INFO | precipitacion: resumen hecho por la API (421 filas estación-día)
+2026-11-08 08:32:23,571 | INFO | precipitacion: descargando 2026-09-01 a 2026-09-19
+2026-11-08 08:32:29,815 | INFO | precipitacion: resumen hecho por la API (436 filas estación-día)
+2026-11-08 08:33:40,456 | INFO | Cobertura API humedad       dataset uext-mhny -> OK | registros: 105247 | 2026-01-01T00:00:00.000 a 2026-09-19T23:00:00.000 
+2026-11-08 08:33:40,509 | INFO | humedad: se reutilizó el archivo guardado meteo_humedad_estacion_dia.csv
+2026-11-08 08:33:58,593 | INFO | Cobertura API viento        dataset sgfv-3yp8 -> OK | registros: 620789 | 2026-01-01T00:00:00.000 a 2026-09-19T23:50:00.000 
+2026-11-08 08:33:58,647 | INFO | viento: se reutilizó el archivo guardado meteo_viento_estacion_dia.csv
+2026-11-08 08:33:58,829 | INFO | --- 6. Validaciones ---
+2026-11-08 08:33:58,855 | INFO | OK           V01 datos originales sin modificar | Las huellas SHA-256 de data/raw son iguales al inicio y al final.
+2026-11-08 08:33:58,856 | INFO | OK           V02 conservación de registros | crudo 41195 = vacías 1 + duplicados 0 + otros departamentos 36997 + Tolima 4197 (suma 41195)
+2026-11-08 08:33:58,856 | INFO | OK           V03 integración sin pérdida ni duplicación de filas | Tolima limpio 4197 vs final 4197
+2026-11-08 08:33:58,856 | INFO | OK           V04 llave (municipio, fecha) única | duplicados encontrados: 0
+2026-11-08 08:33:58,857 | INFO | OK           V05 periodo igual al declarado | datos: 2026-01-01 a 2026-09-19; declarado: 2026-01-01 a 2026-09-19
+2026-11-08 08:33:58,857 | INFO | OK           V06 sin fechas nulas | fechas nulas: 0
+2026-11-08 08:33:58,857 | INFO | OK           V07 solo departamento del proyecto | departamentos: {'TOLIMA'}
+2026-11-08 08:33:58,858 | INFO | OK           V08 municipio y COD_DANE consistentes (1 a 1) | municipios: 47; códigos: 47
+2026-11-08 08:33:58,858 | INFO | OK           V09 columnas clave sin nulos | nulos en municipio/COD_DANE/nivel: 0
+2026-11-08 08:33:58,858 | INFO | OK           V10 nivel de amenaza solo 1, 2 o 3 | valores: [1, 2, 3]
+2026-11-08 08:33:58,858 | INFO | OK           V11 ningún dato meteorológico sin estación de respaldo | valores sin estación: 0
+2026-11-08 08:33:58,859 | INFO | OK           V12 meteorología dentro de rangos físicos | valores fuera de rango: 0
+2026-11-08 08:33:58,859 | INFO | OK           V13 cobertura meteorológica de las alertas | alertas con al menos una variable meteorológica: 1398 de 4197 (33.31%)
+2026-11-08 08:33:58,859 | INFO | --- 7. Resultados ---
+2026-11-08 08:33:59,693 | INFO | Dataset final: alertas_tolima_final.csv (4197 filas, 25 columnas)
+2026-11-08 08:33:59,693 | INFO | === FIN DEL PIPELINE (474.3 s) ===

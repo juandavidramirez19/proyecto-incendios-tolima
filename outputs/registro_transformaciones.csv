@@ -1,0 +1,13 @@
+﻿transformacion,justificacion,filas_antes,filas_despues,detalle
+L1 separar filas sin territorio,"Filas sin departamento, municipio ni código DANE no se pueden asignar a Tolima; se guardan aparte.",41195,41194,descartadas: 1 (ver data/interim/)
+L2 eliminar duplicados exactos,Una fila idéntica en todas sus columnas es un registro repetido.,41194,41194,duplicados eliminados: 0
+T1 convertir tipos,Las fechas venían como texto y los códigos como decimales (float); se necesitan fechas reales para agrupar por mes y códigos enteros para identificar municipios.,41194,41194,fechas no convertibles: 0
+T2 normalizar municipios,El mismo municipio aparece escrito de varias formas (p. ej. PURIFICACIÓN y PURIFICACION). Una clave sin tildes evita cruces fallidos entre fuentes.,41194,41194,nombres distintos antes: 972; claves distintas después: 962
+T3 codificar nivel de amenaza,Un nivel numérico ordenado permite promediar y comparar condiciones por nivel de amenaza.,41194,41194,filas sin nivel reconocido: 0
+T4 variables de calendario,"Permiten analizar la estacionalidad de las alertas (mes, semana, día).",41194,41194,
+T5 filtrar departamento,El proyecto analiza solo TOLIMA; las alertas de otros departamentos quedan fuera del alcance.,41194,4197,filas de otros departamentos: 36997
+T6 preparar catálogo de estaciones,"Las coordenadas usan coma decimal (texto). Además, solo las estaciones pluviométricas, climatológicas, sinópticas, etc. miden clima; las limnimétricas miden nivel de ríos.",4528,291,estaciones atmosféricas: 201; no atmosféricas: 90
+T7 rango válido (temperatura),Un sensor puede enviar valores erróneos; se anulan valores fuera de rango físico sin borrar la fila.,4251,4251,valores anulados: 0 (rango -10 a 45)
+T7 rango válido (precipitacion),Un sensor puede enviar valores erróneos; se anulan valores fuera de rango físico sin borrar la fila.,7134,7134,valores anulados: 0 (rango 0 a 500)
+T7 rango válido (humedad),Un sensor puede enviar valores erróneos; se anulan valores fuera de rango físico sin borrar la fila.,4240,4240,valores anulados: 0 (rango 0 a 100)
+T7 rango válido (viento),Un sensor puede enviar valores erróneos; se anulan valores fuera de rango físico sin borrar la fila.,4161,4161,valores anulados: 0 (rango 0 a 40)

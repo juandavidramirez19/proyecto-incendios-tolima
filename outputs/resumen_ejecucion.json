@@ -1,0 +1,23 @@
+{
+  "inicio": "2026-11-08T08:26:05",
+  "duracion_segundos": 474.3,
+  "modo_meteo": "api",
+  "periodo": [
+    "2026-01-01",
+    "2026-09-19"
+  ],
+  "filas_alertas_originales": 41195,
+  "filas_tolima_final": 4197,
+  "alertas_con_meteo": 1398,
+  "validaciones": {
+    "OK": 13
+  },
+  "dataset_final": "data\\processed\\alertas_tolima_final.csv",
+  "archivos_generados": [
+    "outputs\\alertas_por_mes_y_nivel.csv",
+    "outputs\\resumen_alertas_por_municipio.csv",
+    "outputs\\figuras\\alertas_por_mes_y_nivel.png",
+    "outputs\\figuras\\top_municipios.png",
+    "outputs\\meteo_promedio_por_nivel_amenaza.csv"
+  ]
+}

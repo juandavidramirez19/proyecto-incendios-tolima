@@ -1,0 +1,5 @@
+﻿variable,dataset_id,total_registros,fecha_min,fecha_max,estado,mensaje,dias_con_datos,dias_periodo,estaciones,municipios,filas_estacion_dia
+temperatura,sbwg-7ju4,105685,2026-01-01T00:00:00.000,2026-09-19T23:00:00.000,OK,,238,262,23,31,4251
+precipitacion,s54a-sgyg,1108706,2026-01-01T00:00:00.000,2026-09-19T23:50:00.000,OK,,238,262,43,53,7134
+humedad,uext-mhny,105247,2026-01-01T00:00:00.000,2026-09-19T23:00:00.000,OK,,237,262,23,31,4240
+viento,sgfv-3yp8,620789,2026-01-01T00:00:00.000,2026-09-19T23:50:00.000,OK,,237,262,23,32,4161

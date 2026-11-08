@@ -1,0 +1,4 @@
+﻿TEXTO_AMENAZA,temperatura_media_c,precipitacion_total_mm,humedad_media_pct,viento_medio_ms,alertas_con_meteo
+alta,26.6,0.15,61.55,1.73,625
+baja,24.38,1.36,74.32,1.46,395
+moderada,24.98,0.94,68.15,1.66,378

@@ -1,0 +1,14 @@
+﻿validacion,estado,detalle
+V01 datos originales sin modificar,OK,Las huellas SHA-256 de data/raw son iguales al inicio y al final.
+V02 conservación de registros,OK,crudo 41195 = vacías 1 + duplicados 0 + otros departamentos 36997 + Tolima 4197 (suma 41195)
+V03 integración sin pérdida ni duplicación de filas,OK,Tolima limpio 4197 vs final 4197
+"V04 llave (municipio, fecha) única",OK,duplicados encontrados: 0
+V05 periodo igual al declarado,OK,datos: 2026-01-01 a 2026-09-19; declarado: 2026-01-01 a 2026-09-19
+V06 sin fechas nulas,OK,fechas nulas: 0
+V07 solo departamento del proyecto,OK,departamentos: {'TOLIMA'}
+V08 municipio y COD_DANE consistentes (1 a 1),OK,municipios: 47; códigos: 47
+V09 columnas clave sin nulos,OK,nulos en municipio/COD_DANE/nivel: 0
+"V10 nivel de amenaza solo 1, 2 o 3",OK,"valores: [1, 2, 3]"
+V11 ningún dato meteorológico sin estación de respaldo,OK,valores sin estación: 0
+V12 meteorología dentro de rangos físicos,OK,valores fuera de rango: 0
+V13 cobertura meteorológica de las alertas,OK,alertas con al menos una variable meteorológica: 1398 de 4197 (33.31%)
