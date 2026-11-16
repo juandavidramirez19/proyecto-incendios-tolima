@@ -19,7 +19,7 @@ from datetime import datetime
 
 import pandas as pd
 
-from . import analisis, carga_datos, config, integracion, limpieza, transformaciones, validaciones
+from . import analisis, carga_datos, config, diccionario, integracion, limpieza, transformaciones, validaciones
 
 log = logging.getLogger("pipeline")
 
@@ -124,6 +124,34 @@ def obtener_meteo(modo, reutilizar, registro):
     return datos, cob_df
 
 
+def informar_dataset_final(ruta_final, final):
+    """Muestra al final de la ejecución dónde quedó el dataset final y qué contiene."""
+    dic = diccionario.construir_diccionario(final)
+    ruta_dic = config.DIR_OUTPUTS / "diccionario_dataset_final.csv"
+    dic.to_csv(ruta_dic, index=False, encoding=config.CODIFICACION_CSV)
+    con_meteo = int(final["tiene_meteo"].sum())
+    linea = "=" * 78
+    log.info(linea)
+    log.info("DATASET FINAL GENERADO")
+    log.info("Archivo : %s", ruta_final.resolve())
+    log.info("Carpeta : %s", ruta_final.resolve().parent)
+    log.info("Tamaño  : %d filas x %d columnas (%.0f KB)", len(final), final.shape[1],
+             ruta_final.stat().st_size / 1024)
+    log.info("Qué es  : una fila por alerta de incendio de %s, del %s al %s, con su calendario, "
+             "contexto del catálogo de estaciones y mediciones meteorológicas del IDEAM.",
+             config.DEPARTAMENTO, final["FECHA_EJECUCION"].min().date(), final["FECHA_EJECUCION"].max().date())
+    log.info("Columnas por grupo:")
+    for grupo in dict.fromkeys(dic["grupo"]):
+        columnas = dic.loc[dic["grupo"] == grupo, "columna"].tolist()
+        log.info("  - %s (%d): %s", grupo, len(columnas), ", ".join(columnas))
+    log.info("Meteorología: %d de %d alertas (%.2f%%) tienen al menos una medición real; "
+             "las demás quedan vacías (no se rellenan ni se interpolan).",
+             con_meteo, len(final), 100 * con_meteo / len(final))
+    log.info("Descripción de cada columna: %s", ruta_dic.resolve())
+    log.info(linea)
+    return ruta_dic
+
+
 # ---------------------------------------------------------------------------
 # Programa principal
 # ---------------------------------------------------------------------------
@@ -210,6 +238,8 @@ def main(argv=None):
     ruta_final = config.DIR_PROCESSED / "alertas_tolima_final.csv"
     final.sort_values(["FECHA_EJECUCION", "municipio_clave"]).to_csv(ruta_final, index=False, encoding=config.CODIFICACION_CSV)
     creados = analisis.generar_resultados(final)
+    ruta_dic = informar_dataset_final(ruta_final, final)
+    creados.append(ruta_dic)
 
     resumen = {
         "inicio": inicio.isoformat(timespec="seconds"),

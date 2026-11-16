@@ -28,8 +28,9 @@ dataset final con controles de calidad.
 | `src/integracion.py` | Une alertas + catálogo (contexto) + mediciones por (municipio, fecha), sin rellenar vacíos |
 | `src/validaciones.py` | 13 controles de calidad (conservación de registros, llaves, rangos, cobertura) |
 | `src/analisis.py` | Tablas y gráficos de resultados |
+| `src/diccionario.py` | Describe cada columna del dataset final |
 | `src/pipeline.py` | Ejecuta todo en orden |
-| `tests/` | 28 pruebas automáticas (`pytest`) |
+| `tests/` | 30 pruebas automáticas (`pytest`) |
 | `notebooks/01_avance_original_colab.ipynb` | Tu notebook original, sin modificar |
 | `docs/` | Informe técnico, registro de pruebas y guía paso a paso de VS Code y GitHub |
 
@@ -47,7 +48,7 @@ Si PowerShell bloquea la activación: `Set-ExecutionPolicy -Scope CurrentUser -E
 
 ## Ejecución
 ```powershell
-python -m pytest -q                       # pruebas (deben pasar las 28)
+python -m pytest -q                       # pruebas (deben pasar las 30)
 python -m src.pipeline                    # pipeline completo, consulta la API del IDEAM (requiere internet)
 python -m src.pipeline --meteo ninguna    # solo alertas y catálogo, sin internet
 python -m src.pipeline --meteo archivos   # meteorología desde data/raw/meteo/*.csv (descargas manuales)
@@ -63,6 +64,7 @@ columnas `fecha, estacion, municipio, valor` (un valor por estación y día).
 | `data/interim/alertas_tolima_limpias.csv` | Alertas de Tolima tras limpieza |
 | `data/interim/filas_descartadas_sin_territorio.csv` | Filas descartadas (con justificación) |
 | `data/interim/meteo_<variable>_estacion_dia.csv` | Mediciones descargadas, resumidas por estación y día |
+| `outputs/diccionario_dataset_final.csv` | Qué contiene cada columna del dataset final (grupo, tipo, descripción) |
 | `outputs/log_ejecucion.txt` | Registro de consola de la ejecución |
 | `outputs/resumen_ejecucion.json` | Resumen de la corrida |
 | `outputs/diagnostico_calidad.csv` | Diagnóstico de calidad de las fuentes originales |
@@ -74,6 +76,12 @@ columnas `fecha, estacion, municipio, valor` (un valor por estación y día).
 | `outputs/contexto_estaciones_por_municipio.csv` | Estaciones atmosféricas del catálogo por municipio |
 | `outputs/alertas_por_mes_y_nivel.csv`, `outputs/resumen_alertas_por_municipio.csv` | Tablas de resultados |
 | `outputs/figuras/*.png` | Gráficos |
+
+## Dónde queda el dataset final
+Al terminar, la consola y `outputs/log_ejecucion.txt` muestran un bloque **DATASET FINAL GENERADO** con la ruta completa del archivo,
+su tamaño, las columnas agrupadas y cuántas alertas tienen mediciones. El archivo es `data/processed/alertas_tolima_final.csv`.
+
+**Tiempos de espera de la API:** `TIMEOUT_SEGUNDOS = 600` y `INTENTOS = 5` en `src/config.py` (se pueden aumentar si la red es lenta).
 
 ## Cómo comprobar que quedó bien
 1. En la consola deben aparecer las validaciones `OK` (V13 puede salir `ADVERTENCIA` si no hay meteorología).

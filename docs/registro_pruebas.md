@@ -19,11 +19,13 @@
 | Archivos de salida | Las tildes se veían como `Ã³` al leer en PowerShell | Los CSV se guardaban en UTF-8 sin marca y PowerShell los interpretaba mal | Se guardan con `utf-8-sig`; para ver en consola: `Get-Content -Encoding UTF8` | Revisión de los CSV en Excel |
 | Entorno: Git | `git` no se reconoce en la terminal | La terminal no tenía Git en el PATH | `$env:Path += ";C:\Program Files\Git\cmd"` o reiniciar el equipo | `git --version` |
 | Cobertura meteorológica | 19 de 47 municipios sin ninguna medición (1.625 alertas) | Probablemente estaciones convencionales ausentes de los conjuntos de datos automáticos (no verificado) | Se documenta como limitación; no se interpola ni se asigna la estación de otro municipio | V11 (ningún dato sin estación de respaldo) |
+| Demostración en clase | La conexión con la API se cortó por tiempo durante la sustentación | Probable: tiempo de espera insuficiente frente a la lentitud de datos.gov.co (causa inferida, no registrada en el log) | `TIMEOUT_SEGUNDOS` de 300 a 600 s e `INTENTOS` de 3 a 5 en `config.py` | `test_reintenta_si_se_agota_el_tiempo`; ejecución completa en entorno limpio |
+| Resultado final poco visible | Al terminar no se indicaba dónde quedaba el dataset ni qué contenía | Faltaba un resumen final | Bloque `DATASET FINAL GENERADO` y `outputs/diccionario_dataset_final.csv` | `test_todas_las_columnas_finales_tienen_descripcion` |
 
 ## Pruebas ejecutadas
 | Prueba | Resultado |
 |---|---|
-| `python -m pytest -q` | 28 pruebas pasadas |
+| `python -m pytest -q` | 30 pruebas pasadas |
 | `python -m src.pipeline --reutilizar-cache` (08/11/2026) | Las 4 variables en OK; 4.197 filas finales; 13 validaciones en OK; V13: 1.398 de 4.197 alertas con meteorología (33,31 %); duración 474 s |
 | Primera ejecución `python -m src.pipeline` (08/11/2026) | Temperatura, humedad y viento en OK; precipitación con `ERROR_RED` por tiempo agotado (corregido) |
 | `outputs/municipios_meteo_sin_coincidencia.csv` | Vacío: todos los municipios de las mediciones cruzan con las alertas |

@@ -79,8 +79,8 @@ COLUMNAS_IDEAM = {
 }
 LIMITE_POR_PAGINA = 50000
 MAX_PAGINAS = 200
-TIMEOUT_SEGUNDOS = 300      # espera máxima por consulta (la precipitación es un conjunto muy grande)
-INTENTOS = 3                # cuántas veces se reintenta si hay tiempo agotado o error temporal
+TIMEOUT_SEGUNDOS = 600      # espera máxima por consulta, en segundos (10 min); la API del IDEAM puede ser muy lenta
+INTENTOS = 5                # cuántas veces se reintenta si hay tiempo agotado o error temporal
 ESPERA_REINTENTO = 10       # segundos de espera antes de reintentar (se multiplica por el número de intento)
 CODIFICACION_CSV = "utf-8-sig"  # con esta codificación Excel muestra bien las tildes
 

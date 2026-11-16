@@ -81,7 +81,7 @@ Trece controles automáticos (`outputs/reporte_validaciones.csv`). En la ejecuci
 - V11 y V12: ningún dato meteorológico sin estación de respaldo y ningún valor fuera de rango físico.
 - V13: 1.398 de 4.197 alertas (33,31 %) tienen al menos una variable meteorológica. Este control solo exige que
   haya alguna; **no** significa que la cobertura sea buena (ver sección 9).
-Además hay 28 pruebas automáticas con `pytest` (todas pasan), incluidas pruebas de la consulta a la API con
+Además hay 30 pruebas automáticas con `pytest` (todas pasan), incluidas pruebas de la consulta a la API con
 respuestas simuladas, de los reintentos y de la descarga mes por mes.
 
 ## 8. Resultados y conclusiones
